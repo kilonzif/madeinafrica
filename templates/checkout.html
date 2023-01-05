@@ -1,0 +1,124 @@
+{% include 'includes/_layout.html' %}
+
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="/">Home</a></li>
+				<li class="active">Checkout</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /BREADCRUMB -->
+    
+    {% include 'includes/_messages.html' %}
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+					<div class="col-md-6">
+						<div class="shiping-methods">
+							<div class="section-title">
+								<h4 class="title">Shiping Methods</h4>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="shipping" id="shipping-1" checked>
+								<label for="shipping-1">Free Shiping -  $0.00</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="shipping" id="shipping-2">
+								<label for="shipping-2">Standard - $4.00</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+
+
+						<div class="payments-methods">
+							<div class="section-title">
+								<h4 class="title">Payments Methods</h4>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-1" checked>
+								<label for="payments-1"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" /></label>
+								
+								<div class="caption">
+								<!--  -->
+									{% if session['logged_in'] %}
+										<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="paypal">
+
+										  <!-- Identify your business so that you can collect the payments. -->
+										  <input type="hidden" name="business" value="faithmueni6@gmail.com">
+
+										  <!-- Specify a Buy Now button. -->
+										  <input type="hidden" name="cmd" value="_xclick">
+
+										  <!-- Specify details about the item that buyers will purchase. -->
+										  
+										  <input type="hidden" name="amount" value="{{session['amount']}}">
+										  <input type="hidden" name="currency_code" value="USD">
+										  <input type="hidden" name="rm" value="2"> 
+										   
+										  <center>
+											  <!-- Display the payment button. -->
+											  <input type="image" name="submit" border="0" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" alt="Buy Now" name="payb" />
+										
+										 </center>
+										</form>
+									{% else %}
+										<p>You need to be <a href="/login/" target="blank"><strong>logged in</strong></a> to subscribe.</p>
+									{% endif %}
+
+								</div>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-2">
+								<label for="payments-2">Direct Bank Transfer</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+							<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-3">
+								<label for="payments-3">Cheque Payment</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+								<div class="input-checkbox">
+								<input type="radio" name="payments" id="payments-4">
+								<label for="payments-4">Mobile Money</label>
+								<div class="caption">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										<p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				<!-- </form> -->
+			</div>
+			<!-- /row -->
+			<div class="row">
+				<hr>
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /section -->
+
+{% include 'includes/_footer.html' %}
